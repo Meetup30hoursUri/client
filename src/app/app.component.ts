@@ -9,4 +9,5 @@ export class AppComponent {
   title = 'meetup-lecturers-client';
 
   //Hi there! That's Katrin
+  //Hi all, this is Julia 
 }
