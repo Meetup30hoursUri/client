@@ -11,5 +11,5 @@ export class AppComponent {
 
   //Hi there! That's Katrin
   //Hi all, this is Julia
-  //Hi, this is Yarden
+  //Hi, this is Yarden!
 }
