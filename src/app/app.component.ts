@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'meetup-lecturers-client';
 
-  //Hi there! That's Katrin
-  //Hi all, this is Julia 
+  //Hi there! That's Katrin Polit
+  //Hi all, this is Julia
 }
