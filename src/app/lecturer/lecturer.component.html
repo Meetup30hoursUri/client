@@ -1,3 +1,26 @@
+<h3>
+  Lectrurer's Profile
+</h3>
 <p>
-  lecturer works!
+  <mat-checkbox>Hip hip hoorey </mat-checkbox>
 </p>
+
+<p>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="First Name" value="Uri">
+  </mat-form-field>
+  </p>
+  <p>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Last Name" value="Shaked">
+  </mat-form-field>
+
+</p>
+<p>
+  <mat-form-field>
+    <input matInput placeholder="Enter your email" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+</p>
+
+
