@@ -11,14 +11,13 @@ import {MatButtonModule, MatCheckboxModule,
 import { AppComponent } from './app.component';
 import { LecturerComponent } from './lecturer/lecturer.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginComponent } from './login/login.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LecturerComponent,
-    LoginComponent
+    LecturerComponent
   ],
   imports: [
     BrowserModule,
