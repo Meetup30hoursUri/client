@@ -11,13 +11,18 @@ import {MatButtonModule, MatCheckboxModule,
 import { AppComponent } from './app.component';
 import { LecturerComponent } from './lecturer/lecturer.component';
 import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './login/login.component';
 
+import { SocialLoginModule, AuthServiceConfig } from "angular5-social-login"; import { FacebookLoginProvider } from "angular5-social-login";
+import { getAuthServiceConfigs } from "./socialloginConfig";
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LecturerComponent
+    LecturerComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,9 +31,12 @@ import { AppRoutingModule } from './app-routing.module';
     MatButtonModule, MatCheckboxModule ,MatButtonToggleModule,MatCardModule,MatDatepickerModule,
     MatDialogModule, MatDividerModule, MatExpansionModule,
     MatGridListModule,MatIconModule,MatInputModule,MatChipsModule,
-    MatListModule, MatMenuModule
+    MatListModule, MatMenuModule, SocialLoginModule, HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: AuthServiceConfig,
+    useFactory: getAuthServiceConfigs
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

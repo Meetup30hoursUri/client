@@ -3,10 +3,9 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\login",
-    "\\src\\app\\services",
-    "\\src\\app\\services\\user"
+    "\\src\\app\\config",
+    "\\src\\app\\login"
   ],
-  "SelectedNode": "\\src\\app\\services\\user\\user.service.ts",
+  "SelectedNode": "\\src\\app\\socialloginConfig.ts",
   "PreviewInSolutionExplorer": false
 }
