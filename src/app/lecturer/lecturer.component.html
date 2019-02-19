@@ -1,9 +1,7 @@
 <h3>
   Lectrurer's Profile
 </h3>
-<p>
-  <mat-checkbox>Hip hip hoorey </mat-checkbox>
-</p>
+
 
 <p>
   <mat-form-field class="example-full-width">
@@ -22,5 +20,31 @@
     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
   </mat-form-field>
 </p>
+<mat-form-field class="example-chip-list">
+  <mat-chip-list #chipList>
+    <mat-chip
+      *ngFor="let theme of themes"
+      [selectable]="selectable"
+      [removable]="removable"
+      (removed)="remove(theme)">
+      {{theme}}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <input
+      placeholder="Add theme..."
+      #themeInput
+      [formControl]="themeCtrl"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      [matChipInputAddOnBlur]="addOnBlur"
+      (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option *ngFor="let theme of filteredThemes | async" [value]="theme">
+      {{theme}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
 
 

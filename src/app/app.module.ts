@@ -4,28 +4,6 @@ import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {MatTabsModule} from '@angular/material/tabs';
-import {
-  MatButtonModule,
-  MatTableModule,
-  MatCheckboxModule,
-  MatButtonToggleModule,
-  MatCardModule,
-  MatDatepickerModule,
-  MatDialogModule,
-  MatDividerModule,
-  MatExpansionModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatChipsModule,
-  MatListModule,
-  MatPaginatorModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatSelectModule
-} from '@angular/material';
-import {AppComponent} from './app.component';
-import {LecturerComponent} from './lecturer/lecturer.component';
 import {AppRoutingModule} from './app-routing.module';
 import {MeetupFormComponent} from './meetup-form/meetup-form.component';
 import {HttpClientModule}    from '@angular/common/http';
@@ -39,6 +17,17 @@ import {WebService} from './services/web.service';
 import {HttpModule} from '@angular/http';
 import {AuthService} from './auth.service';
 import {RegisterComponent} from './register/register.component';
+import {MatButtonModule, MatCheckboxModule, MatAutocompleteModule,
+  MatButtonToggleModule,MatCardModule,MatDatepickerModule,
+  MatTableModule,MatPaginatorModule,MatNativeDateModule,MatSelectModule,
+  MatDialogModule, MatDividerModule, MatExpansionModule,
+  MatGridListModule,MatIconModule,MatInputModule,MatChipsModule,
+  MatListModule, MatMenuModule} from '@angular/material';
+import { AppComponent } from './app.component';
+import { LecturerComponent } from './lecturer/lecturer.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -54,6 +43,7 @@ import {RegisterComponent} from './register/register.component';
     AppRoutingModule,
     BrowserAnimationsModule, FormsModule, ReactiveFormsModule,
     MatButtonModule, MatCheckboxModule, MatButtonToggleModule, MatCardModule, MatDatepickerModule,
+    MatAutocompleteModule,
     MatDialogModule, MatDividerModule, MatExpansionModule,
     MatGridListModule, MatIconModule, MatInputModule, MatChipsModule,
     MatListModule, MatMenuModule, MatTabsModule, MatNativeDateModule,
@@ -63,9 +53,6 @@ import {RegisterComponent} from './register/register.component';
     MatTableModule,
     MatPaginatorModule,
     HttpModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
     AngularFireModule.initializeApp(environment.firbaseConfig)
 
 
