@@ -1,0 +1,63 @@
+<p>
+  meetup-form works!
+</p>
+
+<mat-tab-group animationDuration="0ms">
+  <mat-tab label="General Meetup Details">
+    <form [formGroup]="meetupForm" (ngSubmit)="onFormSubmit(meetupForm.value)">
+      <mat-form-field class="demo-full-width">  
+        <input formControlName="title" matInput placeholder="Title">  
+      </mat-form-field>  
+      <mat-error>  
+        <span *ngIf="!meetupForm.get('title').valid && meetupForm.get('title').touched" class="alert alert-danger">Please enter First Name  </span>
+      </mat-error> 
+      <mat-form-field class="demo-full-width">  
+        <input formControlName="theme" matInput placeholder="Theme">  
+      </mat-form-field>  
+      <mat-error>  
+        <span *ngIf="!meetupForm.get('theme').valid && meetupForm.get('theme').touched" class="alert alert-danger">Please enter First Name  </span>
+      </mat-error> 
+      <mat-form-field class="demo-full-width">  
+        <input formControlName="location" matInput placeholder="Location">  
+      </mat-form-field>  
+      <mat-error>  
+        <span *ngIf="!meetupForm.get('location').valid && meetupForm.get('location').touched" class="alert alert-danger">Please enter First Name  </span>
+      </mat-error> 
+      <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date" time="true" >
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    
+      <!-- <mat-form-field class="demo-full-width">  
+        <input mdc-datetime-picker="" formControlName="meetupDate" date="true" time="true" type="text" id="datetime"
+        placeholder="Date" show-todays-date="" min-date="date" ng-model="dateTime" class=" md-input"
+        readonly="readonly">
+      </mat-form-field>  
+      <mat-error>  
+        <span *ngIf="!meetupForm.get('meetupDate').valid && meetupForm.get('meetupDate').touched" class="alert alert-danger">Please enter First Name  </span>
+      </mat-error>  -->
+    </form>
+  </mat-tab>
+
+  <mat-tab label="Add Lecturer">
+    <form [formGroup]="meetupForm" (ngSubmit)="onFormSubmit(meetupForm.value)">  
+      <mat-form-field class="demo-full-width">             
+        <mat-select placeholder="Lecturers" formControlName="lecturers">
+            <!-- <mat-select placeholder="Lecturers" formControlName="lecturers">
+                <mat-option *ngFor="let lecturer of meetupService.array" [value]="lecturer.$key">
+                  {{lecturer.name}}
+                </mat-option> -->
+          <mat-option>None</mat-option> 
+            <ng-container *ngFor="let lecturer of meetupService.lecturerArray">
+            <mat-option value="{{lecturer.$key}}">{{lecturer.name}}</mat-option>
+          </ng-container>
+        </mat-select> 
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="addNewMeetup()">Add Meeup</button> 
+    </form>
+  </mat-tab>
+</mat-tab-group>
+
+
+
