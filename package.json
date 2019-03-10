@@ -17,6 +17,7 @@
     "@angular/common": "~7.1.0",
     "@angular/compiler": "~7.1.0",
     "@angular/core": "~7.1.0",
+    "@angular/fire": "^5.1.1",
     "@angular/forms": "~7.1.0",
     "@angular/http": "^7.2.3",
     "@angular/material": "^7.2.2",
@@ -24,9 +25,14 @@
     "@angular/platform-browser-dynamic": "~7.1.0",
     "@angular/router": "~7.1.0",
     "angular2-jwt": "^0.2.3",
+<<<<<<< HEAD
+    "angularfire2": "^5.1.1",
+=======
     "angular5-social-login": "^1.0.9",
+>>>>>>> 4ab8900890dc26caa6ea9f8d2a55ee5ec44f2165
     "bootstrap-social": "^5.1.1",
     "core-js": "^2.5.4",
+    "firebase": "^5.8.6",
     "rxjs": "~6.3.3",
     "rxjs-compat": "^6.4.0",
     "tslib": "^1.9.0",
