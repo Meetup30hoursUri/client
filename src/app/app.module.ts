@@ -28,21 +28,14 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import { MeetupService } from './services/meetup/meetup.service';
-
-import { SocialLoginModule, AuthServiceConfig } from "angular5-social-login"; import { FacebookLoginProvider } from "angular5-social-login";
 import { getAuthServiceConfigs } from "./socialloginConfig";
-import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LecturerComponent,
-<<<<<<< HEAD
     MeetupFormComponent,
-=======
-    LoginComponent,
->>>>>>> 4ab8900890dc26caa6ea9f8d2a55ee5ec44f2165
   ],
   imports: [
     BrowserModule,
@@ -51,7 +44,6 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule, MatCheckboxModule ,MatButtonToggleModule,MatCardModule,MatDatepickerModule,
     MatDialogModule, MatDividerModule, MatExpansionModule,
     MatGridListModule,MatIconModule,MatInputModule,MatChipsModule,
-<<<<<<< HEAD
     MatListModule, MatMenuModule,MatTabsModule,MatNativeDateModule,
     MatSelectModule,
     HttpClientModule,
@@ -70,17 +62,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatDatepickerModule,
     MatTabsModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatListModule, MatMenuModule, HttpClientModule
   ],  
   providers: [MeetupService],
-=======
-    MatListModule, MatMenuModule, SocialLoginModule, HttpClientModule
-  ],
-  providers: [{
-    provide: AuthServiceConfig,
-    useFactory: getAuthServiceConfigs
-  }],
->>>>>>> 4ab8900890dc26caa6ea9f8d2a55ee5ec44f2165
   bootstrap: [AppComponent]
 })
 export class AppModule { }
