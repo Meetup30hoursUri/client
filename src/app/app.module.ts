@@ -29,6 +29,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import { MeetupService } from './services/meetup/meetup.service';
 import { getAuthServiceConfigs } from "./socialloginConfig";
+import { LecturersComponent } from './lecturers/lecturers.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { getAuthServiceConfigs } from "./socialloginConfig";
     AppComponent,
     LecturerComponent,
     MeetupFormComponent,
+    LecturersComponent,
   ],
   imports: [
     BrowserModule,
