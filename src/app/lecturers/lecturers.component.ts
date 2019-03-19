@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import {MatPaginator, MatTableDataSource} from '@angular/material';
+
 
 @Component({
   selector: 'app-lecturers',
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LecturersComponent implements OnInit {
 
-  constructor() { }
+  displayedColumns: string[] = ['name', 'AreaOfExperties', 'Available'];
+  dataSource = new MatTableDataSource<LecturerDetails>(ELEMENT_DATA);
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
+    this.dataSource.paginator = this.paginator;
   }
-
 }
+
+export interface LecturerDetails {
+  name: string;
+  id: string;
+  areaOfExperties: string;
+  isAvailable: boolean;
+}
+
+const ELEMENT_DATA: LecturerDetails[] = [
+  {id: '1', name: 'Tamar Twena', areaOfExperties: 'JavaScript', isAvailable: true},
+  {id: '2', name: 'Uri Shaked', areaOfExperties: 'JavaScript', isAvailable: true},
+  {id: '3', name: 'Gil Fink', areaOfExperties: 'JavaScript', isAvailable: true},
+  {id: '4', name: 'Shai Reznick', areaOfExperties: 'JavaScript', isAvailable: true},
+  {id: '5', name: 'Netta Bondy', areaOfExperties: 'JavaScript', isAvailable: true}
+];
+

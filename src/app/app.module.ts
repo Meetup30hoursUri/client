@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonModule,
+        MatTableModule,
         MatCheckboxModule,
         MatButtonToggleModule,
         MatCardModule,
@@ -16,6 +17,7 @@ import {MatButtonModule,
         MatInputModule,
         MatChipsModule,
         MatListModule,
+        MatPaginatorModule,
         MatMenuModule,
         MatNativeDateModule,
         MatSelectModule} from '@angular/material';
@@ -50,6 +52,8 @@ import { LecturersComponent } from './lecturers/lecturers.component';
     MatSelectModule,
     HttpClientModule,
     AngularFireDatabaseModule,
+    MatTableModule,
+    MatPaginatorModule,
     AngularFireModule.initializeApp(environment.firbaseConfig)
 
     
