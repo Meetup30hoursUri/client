@@ -39,7 +39,7 @@
       </mat-error>  -->
     </form>
   </mat-tab>
-
+  
   <mat-tab label="Add Lecturer">
     <form [formGroup]="meetupForm" (ngSubmit)="onFormSubmit(meetupForm.value)">  
       <mat-form-field class="demo-full-width">             
@@ -55,9 +55,11 @@
         </mat-select> 
       </mat-form-field>
       <button mat-raised-button color="primary" (click)="addNewMeetup()">Add Meeup</button> 
+      <app-lecturers></app-lecturers>
     </form>
   </mat-tab>
 </mat-tab-group>
+
 
 
 
