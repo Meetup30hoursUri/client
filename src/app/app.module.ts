@@ -20,7 +20,8 @@ import {MatButtonModule,
         MatPaginatorModule,
         MatMenuModule,
         MatNativeDateModule,
-        MatSelectModule} from '@angular/material';
+        MatSelectModule,
+        MatAutocompleteModule} from '@angular/material';
 import { AppComponent } from './app.component';
 import { LecturerComponent } from './lecturer/lecturer.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -29,17 +30,22 @@ import { HttpClientModule }    from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
-import { MeetupService } from './services/meetup/meetup.service';
+import { ThemesService } from './services/themes/themes.service';
 import { getAuthServiceConfigs } from "./socialloginConfig";
 import { LecturersComponent } from './lecturers/lecturers.component';
-
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {Component, ElementRef, ViewChild} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 
 @NgModule({
   declarations: [
     AppComponent,
     LecturerComponent,
     MeetupFormComponent,
-    LecturersComponent,
+    LecturersComponent
+
   ],
   imports: [
     BrowserModule,
@@ -54,9 +60,9 @@ import { LecturersComponent } from './lecturers/lecturers.component';
     AngularFireDatabaseModule,
     MatTableModule,
     MatPaginatorModule,
-    AngularFireModule.initializeApp(environment.firbaseConfig)
-
-    
+    AngularFireModule.initializeApp(environment.firbaseConfig),
+    MatAutocompleteModule,
+    MatIconModule 
   ],
   exports: [  
     MatButtonModule,  
@@ -69,9 +75,9 @@ import { LecturersComponent } from './lecturers/lecturers.component';
     MatTabsModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatListModule, MatMenuModule, HttpClientModule
+    MatListModule, MatMenuModule, HttpClientModule,MatChipsModule
   ],  
-  providers: [MeetupService],
+  providers: [ThemesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
