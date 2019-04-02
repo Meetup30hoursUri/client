@@ -7,7 +7,7 @@ import { LecturersComponent } from './lecturers/lecturers.component';
 const routes: Routes = [
   { path: 'lecturer', component: LecturerComponent },
   { path: 'meetup-form', component: MeetupFormComponent},
-  { path: 'lecturers', component: LecturersComponent} 
+  { path: 'lecturers', component: LecturersComponent}
 ];
 
 @NgModule({

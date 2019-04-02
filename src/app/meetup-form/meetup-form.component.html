@@ -12,7 +12,12 @@
         <span *ngIf="!meetupForm.get('title').valid && meetupForm.get('title').touched" class="alert alert-danger">Please enter First Name  </span>
       </mat-error> 
       <mat-form-field class="demo-full-width">  
-        <input formControlName="theme" matInput placeholder="Theme">  
+          <mat-select formControlName="theme" placeholder="Theme" multiple>
+              <mat-option>None</mat-option> 
+                <ng-container *ngFor="let themes of themesService.themesArray">
+                <mat-option value="{{themes.$key}}">{{themes.name}}</mat-option>
+              </ng-container>
+            </mat-select> 
       </mat-form-field>  
       <mat-error>  
         <span *ngIf="!meetupForm.get('theme').valid && meetupForm.get('theme').touched" class="alert alert-danger">Please enter First Name  </span>
@@ -42,18 +47,6 @@
 
   <mat-tab label="Add Lecturer">
     <form [formGroup]="meetupForm" (ngSubmit)="onFormSubmit(meetupForm.value)">  
-      <mat-form-field class="demo-full-width">             
-        <mat-select placeholder="Lecturers" formControlName="lecturers">
-            <!-- <mat-select placeholder="Lecturers" formControlName="lecturers">
-                <mat-option *ngFor="let lecturer of meetupService.array" [value]="lecturer.$key">
-                  {{lecturer.name}}
-                </mat-option> -->
-          <mat-option>None</mat-option> 
-            <ng-container *ngFor="let lecturer of meetupService.lecturerArray">
-            <mat-option value="{{lecturer.$key}}">{{lecturer.name}}</mat-option>
-          </ng-container>
-        </mat-select> 
-      </mat-form-field>
       <button mat-raised-button color="primary" (click)="addNewMeetup()">Add Meeup</button> 
     </form>
   </mat-tab>
