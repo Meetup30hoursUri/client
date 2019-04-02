@@ -1,7 +1,8 @@
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonModule,
         MatTableModule,
@@ -38,11 +39,18 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import {LoginComponent} from './login/login.component';
+import {WebService} from './services/web.service';
+import {HttpModule} from '@angular/http';
+import {AuthService} from './auth.service';
+import {RegisterComponent} from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LecturerComponent,
+    LoginComponent,
+    RegisterComponent,
     MeetupFormComponent,
     LecturersComponent
 
@@ -50,34 +58,39 @@ import {map, startWith} from 'rxjs/operators';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule, FormsModule,ReactiveFormsModule,
-    MatButtonModule, MatCheckboxModule ,MatButtonToggleModule,MatCardModule,MatDatepickerModule,
+    BrowserAnimationsModule, FormsModule, ReactiveFormsModule,
+    MatButtonModule, MatCheckboxModule, MatButtonToggleModule, MatCardModule, MatDatepickerModule,
+    MatAutocompleteModule,
     MatDialogModule, MatDividerModule, MatExpansionModule,
-    MatGridListModule,MatIconModule,MatInputModule,MatChipsModule,
-    MatListModule, MatMenuModule,MatTabsModule,MatNativeDateModule,
+    MatGridListModule, MatIconModule, MatInputModule, MatChipsModule,
+    MatListModule, MatMenuModule, MatTabsModule, MatNativeDateModule,
     MatSelectModule,
     HttpClientModule,
     AngularFireDatabaseModule,
     MatTableModule,
     MatPaginatorModule,
-    AngularFireModule.initializeApp(environment.firbaseConfig),
     MatAutocompleteModule,
-    MatIconModule 
+    MatIconModule, 
+    HttpModule,
+    AngularFireModule.initializeApp(environment.firbaseConfig)
+
+
   ],
-  exports: [  
-    MatButtonModule,  
-    MatMenuModule,    
-    MatIconModule,  
-    MatCardModule,  
-    BrowserAnimationsModule,  
-    MatInputModule,  
+  exports: [
+    MatButtonModule,
+    MatMenuModule,
+    MatIconModule,
+    MatCardModule,
+    BrowserAnimationsModule,
+    MatInputModule,
     MatDatepickerModule,
     MatTabsModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatListModule, MatMenuModule, HttpClientModule,MatChipsModule
-  ],  
-  providers: [ThemesService],
+    MatListModule, MatMenuModule, HttpClientModule
+  ],
+  providers: [ThemesService, WebService, AuthService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

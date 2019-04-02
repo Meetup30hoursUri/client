@@ -1,17 +1,22 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { LecturerComponent } from './lecturer/lecturer.component';
-import { MeetupFormComponent } from './meetup-form/meetup-form.component';
-import { LecturersComponent } from './lecturers/lecturers.component';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {LecturerComponent} from './lecturer/lecturer.component';
+import {LoginComponent} from 'src/app/login/login.component';
+import {RegisterComponent} from 'src/app/register/register.component';
+import {MeetupFormComponent} from './meetup-form/meetup-form.component';
+import {LecturersComponent} from './lecturers/lecturers.component';
 
-const routes: Routes = [
-  { path: 'lecturer', component: LecturerComponent },
-  { path: 'meetup-form', component: MeetupFormComponent},
-  { path: 'lecturers', component: LecturersComponent}
+const routes:Routes = [
+    {path: 'lecturer', component: LecturerComponent},
+    {path: 'meetup-form', component: MeetupFormComponent},
+    {path: 'lecturers', component: LecturersComponent},
+    {path: 'login', component: LoginComponent},
+    {path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
