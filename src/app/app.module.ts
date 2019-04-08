@@ -32,7 +32,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import { ThemesService } from './services/themes/themes.service';
-import { getAuthServiceConfigs } from "./socialloginConfig";
+//import { getAuthServiceConfigs } from "./socialloginConfig";
 import { LecturersComponent } from './lecturers/lecturers.component';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {Component, ElementRef, ViewChild} from '@angular/core';
