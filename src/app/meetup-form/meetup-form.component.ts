@@ -26,11 +26,11 @@ export class MeetupFormComponent implements OnInit {
     this.meetupForm = this.fb.group({
       title:  [null,[
         Validators.required,
-        Validators.minLength(2)
+        Validators.minLength(5)
       ]],
       theme: [null,[
         Validators.required,
-        Validators.minLength(2)
+        Validators.minLength(1)
       ]],
       location: [null,[
         Validators.required,
