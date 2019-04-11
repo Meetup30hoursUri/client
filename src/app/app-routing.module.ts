@@ -5,6 +5,8 @@ import {LecturerComponent} from './lecturer/lecturer.component';
 //import {RegisterComponent} from './register/register.component';
 import {MeetupFormComponent} from './meetup-form/meetup-form.component';
 import {LecturersComponent} from './lecturers/lecturers.component';
+import {LecturersSearchComponent} from './lecturers-search/lecturers-search.component';
+
 
 const routes:Routes = [
     {path: 'lecturer', component: LecturerComponent},
@@ -12,6 +14,8 @@ const routes:Routes = [
     {path: 'lecturers', component: LecturersComponent},
     //{path: 'login', component: LoginComponent},
     //{path: 'register', component: RegisterComponent}
+    {path: 'lecturers-search', component: LecturersSearchComponent},
+
 ];
 
 @NgModule({

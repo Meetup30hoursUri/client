@@ -1,0 +1,19 @@
+<h1>Lecturers Search</h1>
+<input type="text" (keydown)="search($event)" placeholder="search lecturers..." class="input">
+
+<div *ngFor="let lecturer of lecturers">
+  <h4>{{lecturer?.name}}</h4>
+  <div *ngFor="let theme of themes">
+    <p>
+      {{lecturer?.theme}}
+    </p>
+  </div>
+</div>
+
+<div *ngIf="lecturers?.length < 1">
+  <hr>
+  <p>
+    No results found :(
+  </p>
+</div>
+
