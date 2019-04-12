@@ -10,7 +10,7 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
 })
 export class LecturersComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'AreaOfExperties', 'Available'];
+  displayedColumns: string[] = ['select', 'name', 'AreaOfExperties', 'Available'];
   dataSource = new MatTableDataSource<LecturerDetails>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
