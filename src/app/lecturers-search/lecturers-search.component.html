@@ -1,16 +1,29 @@
 <h1>Lecturers Search</h1>
-<input type="text" (keydown)="search($event)" placeholder="search lecturers..." class="input">
+<input type="text" #searchInput (keyup)="search(searchInput.value)" placeholder="search lecturers..." class="input">
 
-<div *ngFor="let lecturer of lecturers">
+<p>Search by:</p>
+<div>
+    <input type="radio" id="searchOption1" name="searchOptions" value="name" checked>
+    <label for="searchOption1">Name</label>
+
+    <input type="radio" id="searchOption2" name="searchOptions" value="expertise">
+    <label for="searchOption1">Area of Expertise</label>
+
+    <input type="radio" id="searchOption3" name="searchOptions" value="availability">
+    <label for="searchOption1">Availability</label>
+</div>
+
+<div *ngFor="let lecturer of (lecturers$ | async)">
   <h4>{{lecturer?.name}}</h4>
   <div *ngFor="let theme of themes">
+    <!-- fix this!!! -->
     <p>
       {{lecturer?.theme}}
     </p>
   </div>
 </div>
 
-<div *ngIf="lecturers?.length < 1">
+<div *ngIf="(lecturers$ | async)?.length < 1">
   <hr>
   <p>
     No results found :(
