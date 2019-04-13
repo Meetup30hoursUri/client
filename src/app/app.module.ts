@@ -45,6 +45,7 @@ import {HttpModule} from '@angular/http';
 import {AuthService} from './auth.service';
 import {RegisterComponent} from './register/register.component';
 import { LecturersSearchComponent } from './lecturers-search/lecturers-search.component';
+import { OrganizerComponent } from './organizer/organizer.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { LecturersSearchComponent } from './lecturers-search/lecturers-search.co
     RegisterComponent,
     MeetupFormComponent,
     LecturersComponent,
-    LecturersSearchComponent
+    LecturersSearchComponent,
+    OrganizerComponent
 
   ],
   imports: [

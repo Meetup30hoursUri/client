@@ -6,12 +6,14 @@ import {LecturerComponent} from './lecturer/lecturer.component';
 import {MeetupFormComponent} from './meetup-form/meetup-form.component';
 import {LecturersComponent} from './lecturers/lecturers.component';
 import {LecturersSearchComponent} from './lecturers-search/lecturers-search.component';
+import { OrganizerComponent } from './organizer/organizer.component';
 
 
 const routes:Routes = [
     {path: 'lecturer', component: LecturerComponent},
     {path: 'meetup-form', component: MeetupFormComponent},
     {path: 'lecturers', component: LecturersComponent},
+    { path: 'organizer', component: OrganizerComponent},
     //{path: 'login', component: LoginComponent},
     //{path: 'register', component: RegisterComponent}
     {path: 'lecturers-search', component: LecturersSearchComponent},
