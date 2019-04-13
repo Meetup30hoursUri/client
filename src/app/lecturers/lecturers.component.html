@@ -1,7 +1,13 @@
+<app-lecturers-search></app-lecturers-search>
+
 <div class="mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource">
 
-   
+
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef> SELECT </mat-header-cell>
+      <mat-checkbox *matCellDef="let element"> </mat-checkbox>
+    </ng-container>
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>

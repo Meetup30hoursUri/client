@@ -3,7 +3,7 @@ import {FormBuilder,FormGroup,FormControl,Validators,NgForm } from '@angular/for
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { MeetupService } from '../services/meetup/meetup.service';
+import { ThemesService } from '../services/themes/themes.service';
 
 @Component({
   selector: 'app-meetup-form',
@@ -11,13 +11,6 @@ import { MeetupService } from '../services/meetup/meetup.service';
   styleUrls: ['./meetup-form.component.css']
 })
 export class MeetupFormComponent implements OnInit {
-  // meetupForm = FormGroup;
-  // title: string = '';
-  // theme: string = '';
-  // location: string = '';
-  // meetupDate: new DateTime(): TateTime;
-
-
   meetupForm : FormGroup = new FormGroup({
     title: new FormControl(''),
     theme: new FormControl(''),
@@ -28,16 +21,16 @@ export class MeetupFormComponent implements OnInit {
  
   constructor( private fb: FormBuilder,
                private http: HttpClient,
-               private meetupService: MeetupService
+               private themesService: ThemesService
     ) {
     this.meetupForm = this.fb.group({
       title:  [null,[
         Validators.required,
-        Validators.minLength(2)
+        Validators.minLength(5)
       ]],
       theme: [null,[
         Validators.required,
-        Validators.minLength(2)
+        Validators.minLength(1)
       ]],
       location: [null,[
         Validators.required,
@@ -53,7 +46,7 @@ export class MeetupFormComponent implements OnInit {
    }
 
   ngOnInit() {   
-    console.log(this.meetupService);
+    console.log(this.themesService);
     // this.meetupFirebaseService.getUsers()
     //   .subscribe(result => {
     //     this.items = result;

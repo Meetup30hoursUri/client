@@ -2,43 +2,59 @@ import {Component, OnInit} from '@angular/core';
 import {SharedService} from "./services/shared.service";
 import {Roles} from "./model/Roles";
 import {Router} from "@angular/router";
+import {AngularFireDatabase} from 'angularfire2/database'
+import {AngularFireObject, AngularFireList} from 'angularfire2/database';
+import {Observable} from 'rxjs/Rx';
 
+// export class Theme {
+//   topic: Observable<string[]>;
+// }
+// export class Lecturer {
+//   name: string;
+//   themes: Theme;
+// }
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
 
+export class AppComponent implements OnInit {
+  // lecturers: Observable<any[]>;
   NAME_KEY = 'name';
   TOKEN_KEY = 'token';
   ROLE_KEY = 'role';
 
-  ROLES=Roles;
+  ROLES = Roles;
   currRole;
+  // lecturers: Observable<any[]>;
 
-  constructor(private sharedService:SharedService,  private router:Router) {
+  constructor(private sharedService:SharedService,
+              private router:Router,
+              db:AngularFireDatabase) {
 
+    //   this.lecturers = db.list('lecturers').valueChanges();
+    //   console.log(this.lecturers);
+
+    // const lecturers$ : AngularFireList<any> = db.list('lecturers');
+    // const lecturer$ = db.list('lecturers');
+    // lecturer$.valueChanges().subscribe(console.log)
+
+// maybe the $ isn't neccasary, dos'nt matter now
   }
 
-  //Hi there! That's Katrin
-  //Hi all, this is Julia
-  //Hi, this is Yarden
+//Hi there! That's Katrin
+//Hi all, this is Julia
+//Hi, this is Yarden
 
   ngOnInit() {
-    // if(localStorage.getItem(this.ROLE_KEY) )
-    //   console.log(localStorage.getItem(this.ROLE_KEY))
-    //   console.log("yo")
+
 
     this.sharedService.onUserRegisteredEmitted$.subscribe(()=> {
-     // console.log(localStorage.getItem(this.ROLE_KEY))
-      console.log("yo")
       this.currRole = localStorage.getItem(this.ROLE_KEY);
-      if(this.currRole ===this.ROLES.Lecturer){
-        console.log("HEy, I'm lecturer")
+      if (this.currRole === this.ROLES.Lecturer) {
         this.router.navigate(['/'])
-      }else if(this.currRole ===this.ROLES.Organizer){
-        console.log("HEy, I'm Organizer")
+      } else if (this.currRole === this.ROLES.Organizer) {
         this.router.navigate(['/'])
       }
     })
