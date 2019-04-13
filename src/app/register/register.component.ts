@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth.service';
 import {Roles} from "../model/Roles";
+import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 
+import { AlertService } from '../services/alert/alert.service';
+// import { UserService } from '../services/alert/alert.service';
 
 @Component({
   selector: 'app-register',
@@ -12,8 +16,18 @@ import {Roles} from "../model/Roles";
 export class RegisterComponent implements OnInit {
   form;
    Roles= Roles;
+   submitted = false;
 
-  constructor(private fb: FormBuilder, private auth: AuthService) {
+
+  constructor(private fb: FormBuilder, 
+  		private auth: AuthService,
+        private router: Router,
+        // private userService: UserService,
+        private alertService: AlertService) {
+        // redirect to home if already logged in
+        if (this.auth.isAuthenticated) { 
+            this.router.navigate(['/']);
+        }
     this.form = fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -28,6 +42,13 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmitRegister() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.form.invalid) {
+        return;
+    }
+    
     console.log(this.form.errors);
     this.auth.register(this.form.value);
   }

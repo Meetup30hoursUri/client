@@ -42,6 +42,7 @@ import {MatRadioButton, MatRadioGroup, MatRadioModule} from "@angular/material/r
 import { LecturersSearchComponent } from './lecturers-search/lecturers-search.component';
 import 'hammerjs';
 import { OrganizerComponent } from './organizer/organizer.component';
+import { AlertComponent } from './alert/alert.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { OrganizerComponent } from './organizer/organizer.component';
     MeetupFormComponent,
     LecturersComponent,
     LecturersSearchComponent,
-    OrganizerComponent
+    OrganizerComponent,
+    AlertComponent
 
   ],
   imports: [

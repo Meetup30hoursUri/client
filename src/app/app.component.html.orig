@@ -1,27 +1,46 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
     <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="/">Home</a>
-        <a class="nav-item nav-link" (click)="onLogoutClicked()">Logout</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
     </div>
 </nav>
+<a routerLink="/login">Login</a>
+<a routerLink="/register">Register</a>
+<!-- <a routerLink="/lecturers-search">LecturerSearch</a> -->
+
 
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
     {{ title }}
   </h1>
-  <h1>{{currRole}}</h1>
+  <h1>Current role : {{currRole}}</h1>
   <!--img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="-->
 </div>
-
-<nav *ngIf="currentUser">
+<nav>
+<<<<<<< HEAD
+  <a routerLink="/lecturer">Lecturer's Profile</a>
+  <a routerLink="/login">Login</a>
+  <a routerLink="/organizer">Organizer's screen</a>
+  <a routerLink="/register">Register</a>
+  <a routerLink="/lecturers">Lecturers Screen</a>
+  <a routerLink="/lecturers-search">LecturerSearch</a>
+  <a routerLink="/6">Lecturer</a>
+  <a routerLink="/7">Lecturer</a>
+  <a routerLink="/8">themes</a>
+  <a routerLink="/meetup-form">New Meetup</a>
+  <button (click)="onLogoutClicked()"> LogOut </button>
+=======
    <!-- Lecturer -->
-  <a routerLink="/lecturer" *ngIf="currRole === ROLES.Lecturer">My Profile</a>
+  <a routerLink="/lecturer" *ngIf="lecturer">My Profile</a>
+
   <!-- Organizer -->
-  <a routerLink="/organizer" *ngIf="currRole === ROLES.Organizer">My Profile</a>
-  <a routerLink="/lecturers" *ngIf="currRole === ROLES.Organizer">Lecturers Screen</a>
+  <a routerLink="/organizer" *ngIf="organizer">My Profile</a>
+  <a routerLink="/lecturers" *ngIf="organizer">Lecturers Screen</a>
   <a routerLink="/organizers">Organizers screen</a>
-  <a routerLink="/meetup-form" *ngIf="currRole === ROLES.Organizer">New Meetup</a>
+  <a routerLink="/meetup-form" *ngIf="organizer">New Meetup</a>
+
+>>>>>>> Main Screen
 </nav>
 <router-outlet></router-outlet>
 <!----app-messages></app-messages-->

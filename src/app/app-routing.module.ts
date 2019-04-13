@@ -7,11 +7,15 @@ import {MeetupFormComponent} from './meetup-form/meetup-form.component';
 import {LecturersComponent} from './lecturers/lecturers.component';
 import {LecturersSearchComponent} from './lecturers-search/lecturers-search.component';
 import { OrganizerComponent } from './organizer/organizer.component';
-import {RegisterComponent} from "./register/register.component";
-import {LoginComponent} from "./login/login.component";
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AppComponent } from './app.component';
+
 
 
 const routes:Routes = [
+    { path: '', component: AppComponent, canActivate: [AuthGuard] },
     {path: 'lecturer', component: LecturerComponent},
     {path: 'meetup-form', component: MeetupFormComponent},
     {path: 'lecturers', component: LecturersComponent},

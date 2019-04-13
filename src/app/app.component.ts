@@ -3,8 +3,7 @@ import {SharedService} from "./services/shared.service";
 import {Roles} from "./model/Roles";
 import {Router} from "@angular/router";
 import {AngularFireDatabase} from 'angularfire2/database'
-import {AngularFireObject, AngularFireList} from 'angularfire2/database';
-import {Observable} from 'rxjs/Rx';
+import { AuthService } from './auth.service'
 
 // export class Theme {
 //   topic: Observable<string[]>;
@@ -21,47 +20,50 @@ import {Observable} from 'rxjs/Rx';
 
 export class AppComponent implements OnInit {
   // lecturers: Observable<any[]>;
-  NAME_KEY = 'name';
-  TOKEN_KEY = 'token';
-  ROLE_KEY = 'role';
-
+  title = 'Meetups';
   ROLES = Roles;
-  currRole;
+  currRole: string;
+  currentUser: boolean;
   // lecturers: Observable<any[]>;
 
   constructor(private sharedService:SharedService,
               private router:Router,
-              db:AngularFireDatabase) {
-
-    //   this.lecturers = db.list('lecturers').valueChanges();
-    //   console.log(this.lecturers);
-
-    // const lecturers$ : AngularFireList<any> = db.list('lecturers');
-    // const lecturer$ = db.list('lecturers');
-    // lecturer$.valueChanges().subscribe(console.log)
-
-// maybe the $ isn't neccasary, dos'nt matter now
+              private authService:AuthService) {
+              // console.log("AppComponent constructor: ")
+              this.sharedService.onUserRegisteredEmitted$.subscribe(()=> {
+                this.currRole = this.authService.role;
+                this.currentUser = this.authService.isAuthenticated;
+                // console.log("AppComponent ngOnInit: " + this.currentUser)
+                // if (this.currRole === this.ROLES.Lecturer) {
+                //   this.router.navigate(['/'])
+                // } else if (this.currRole === this.ROLES.Organizer) {
+                //   this.router.navigate(['/'])
+                // }
+              })              // console.log("AppComponent constructor: currentUser " + this.currentUser)
+              
   }
 
-//Hi there! That's Katrin
-//Hi all, this is Julia
-//Hi, this is Yarden
-
   ngOnInit() {
+    // this.currRole = this.authService.role;
+    // this.currentUser = this.authService.isAuthenticated;
+    // console.log("AppComponent ngOnInit: " + this.currentUser)
     this.sharedService.onUserRegisteredEmitted$.subscribe(()=> {
-      this.currRole = localStorage.getItem(this.ROLE_KEY);
-      if (this.currRole === this.ROLES.Lecturer) {
-        this.router.navigate(['/'])
-      } else if (this.currRole === this.ROLES.Organizer) {
-        this.router.navigate(['/'])
-      }
+      this.currRole = this.authService.role;
+      this.currentUser = this.authService.isAuthenticated;
+      // console.log("AppComponent ngOnInit: " + this.currentUser)
+      // if (this.currRole === this.ROLES.Lecturer) {
+      //   this.router.navigate(['/'])
+      // } else if (this.currRole === this.ROLES.Organizer) {
+      //   this.router.navigate(['/'])
+      // }
     })
   }
 
   onLogoutClicked(){
-    localStorage.setItem(this.TOKEN_KEY, null);
-    localStorage.setItem(this.ROLE_KEY, null);
-    localStorage.setItem(this.NAME_KEY, null);
+    this.authService.logout();
+    this.currentUser = null;
+    this.currRole = '';
     this.router.navigate(['login']);
+    console.log("AppComponent onLogoutClicked: " + this.currentUser)
   }
 }
