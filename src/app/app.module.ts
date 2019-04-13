@@ -25,6 +25,7 @@ import {MatButtonModule, MatCheckboxModule, MatAutocompleteModule,
   MatListModule, MatMenuModule} from '@angular/material';
 import { AppComponent } from './app.component';
 import { LecturerComponent } from './lecturer/lecturer.component';
+import {MatRadioButton, MatRadioGroup, MatRadioModule} from "@angular/material/radio";
 
 
 
@@ -50,6 +51,7 @@ import { LecturerComponent } from './lecturer/lecturer.component';
     MatSelectModule,
     HttpClientModule,
     AngularFireDatabaseModule,
+    MatRadioModule,
     MatTableModule,
     MatPaginatorModule,
     HttpModule,

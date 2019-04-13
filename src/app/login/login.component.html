@@ -1,2 +1,13 @@
 <h2>Login</h2>
+<form [formGroup]="form" class="login-form" (ngSubmit)="onSubmitLogin()">
+  <mat-form-field class="login-full-width">
+    <input [ngClass]="{'error':isValid('email')}" type="email" matInput placeholder="Email" formControlName="email">
+  </mat-form-field>
 
+  <mat-form-field class="login-full-width">
+    <input [ngClass]="{'error':isValid('password')}" matInput placeholder="Password" type="password"
+           formControlName="password">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary">Sign in</button>
+</form>
