@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {SharedService} from "./services/shared.service";
+import {Roles} from "./model/Roles";
+import {Router} from "@angular/router";
 import {AngularFireDatabase} from 'angularfire2/database'
-import { AngularFireObject, AngularFireList } from 'angularfire2/database';
+import {AngularFireObject, AngularFireList} from 'angularfire2/database';
 import {Observable} from 'rxjs/Rx';
 
 // export class Theme {
@@ -15,10 +18,21 @@ import {Observable} from 'rxjs/Rx';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent{
-    // lecturers: Observable<any[]>;
 
-    constructor(db: AngularFireDatabase ) {
+export class AppComponent implements OnInit {
+  // lecturers: Observable<any[]>;
+  NAME_KEY = 'name';
+  TOKEN_KEY = 'token';
+  ROLE_KEY = 'role';
+
+  ROLES = Roles;
+  currRole;
+  // lecturers: Observable<any[]>;
+
+  constructor(private sharedService:SharedService,
+              private router:Router,
+              db:AngularFireDatabase) {
+
     //   this.lecturers = db.list('lecturers').valueChanges();
     //   console.log(this.lecturers);
 
@@ -27,6 +41,27 @@ export class AppComponent{
     // lecturer$.valueChanges().subscribe(console.log)
 
 // maybe the $ isn't neccasary, dos'nt matter now
-    }
+  }
 
+//Hi there! That's Katrin
+//Hi all, this is Julia
+//Hi, this is Yarden
+
+  ngOnInit() {
+    this.sharedService.onUserRegisteredEmitted$.subscribe(()=> {
+      this.currRole = localStorage.getItem(this.ROLE_KEY);
+      if (this.currRole === this.ROLES.Lecturer) {
+        this.router.navigate(['/'])
+      } else if (this.currRole === this.ROLES.Organizer) {
+        this.router.navigate(['/'])
+      }
+    })
+  }
+
+  onLogoutClicked(){
+    localStorage.setItem(this.TOKEN_KEY, null);
+    localStorage.setItem(this.ROLE_KEY, null);
+    localStorage.setItem(this.NAME_KEY, null);
+    this.router.navigate(['login']);
+  }
 }

@@ -1,17 +1,32 @@
 <h1>Lecturers Search</h1>
-<input type="text" #searchInput (keyup)="search(searchInput.value)" placeholder="search lecturers..." class="input">
 
 <p>Search by:</p>
-<div>
-    <input type="radio" id="searchOption1" name="searchOptions" value="name" checked>
-    <label for="searchOption1">Name</label>
+<!-- <div>
+  <input type="radio" name="searchOption" value="lowercasename" (change)="radioChangeHandler($event)" checked>
+  <i>Name</i>
 
-    <input type="radio" id="searchOption2" name="searchOptions" value="expertise">
-    <label for="searchOption1">Area of Expertise</label>
+  <input type="radio" name="searchOption" value="themes" (change)="radioChangeHandler($event)" checked>
+  <i>Area of Expertise</i>
 
-    <input type="radio" id="searchOption3" name="searchOptions" value="availability">
-    <label for="searchOption1">Availability</label>
+  <input type="radio" name="searchOption" value="availability" (change)="radioChangeHandler($event)" checked>
+  <i>Availability</i>
+</div> -->
+
+<div class="text-center mt-5">
+  <div>
+    <ul class="list-group">
+          <li class="list-group-item"  *ngFor="let item of itemsList">
+            <input type="radio" [(ngModel)]="radioSelected" name="list_name" value="{{item.value}}" (change)="radioChangeHandler(item)"/> 
+            {{item.name}}
+            
+          </li>
+    </ul>
+  </div>    
 </div>
+<div *ngIf = "radioSelected !== 'available'">
+<input type="text" id="optional" #searchInput (keyup)="search(searchInput.value)" placeholder="search..." class="input">
+</div>
+
 
 <div *ngIf="(lecturers$ | async)?.length > 1">
     <app-lecturers [ELEMENT_DATA]="lecturers"></app-lecturers>
@@ -20,7 +35,9 @@
 <div *ngIf="(lecturers$ | async)?.length < 1">
   <hr>
   <p>
-    No results found :(
+    No results found 
   </p>
 </div>
 
+
+<!-- wrap this search with Tamar's Table later  -->
