@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import {FormBuilder,FormGroup,FormControl,Validators,NgForm } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { ThemesService } from '../services/themes/themes.service';
+
 
 @Component({
   selector: 'app-meetup-form',
@@ -18,7 +19,7 @@ export class MeetupFormComponent implements OnInit {
     meetupDate: new FormControl(new Date()),
     lecturers: new FormControl(0)
   })
- 
+  
   constructor( private fb: FormBuilder,
                private http: HttpClient,
                private themesService: ThemesService
@@ -42,19 +43,26 @@ export class MeetupFormComponent implements OnInit {
        lecturers: [null,
         []]
 
-    });  
+    }); 
+     
    }
+
+   public getSelectedThemes() {
+    var t = this.selectedTheme;
+    console.log(t);
+    // console.log(t[0].name);
+    // console.log(t[0].$key);
+}
 
   ngOnInit() {   
     console.log(this.themesService);
-    // this.meetupFirebaseService.getUsers()
-    //   .subscribe(result => {
-    //     this.items = result;
-    //   })
+
   }
   onFormSubmit(form:NgForm)  
     {  
       console.log(form);  
     }  
+
+
 
 }

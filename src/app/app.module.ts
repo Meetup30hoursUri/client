@@ -45,6 +45,7 @@ import {HttpModule} from '@angular/http';
 import {AuthService} from './auth.service';
 import {RegisterComponent} from './register/register.component';
 import { LecturersSearchComponent } from './lecturers-search/lecturers-search.component';
+import 'hammerjs';
 
 @NgModule({
   declarations: [
