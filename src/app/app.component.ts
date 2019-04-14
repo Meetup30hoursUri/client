@@ -48,8 +48,6 @@ export class AppComponent implements OnInit {
 //Hi, this is Yarden
 
   ngOnInit() {
-
-
     this.sharedService.onUserRegisteredEmitted$.subscribe(()=> {
       this.currRole = localStorage.getItem(this.ROLE_KEY);
       if (this.currRole === this.ROLES.Lecturer) {
@@ -58,5 +56,12 @@ export class AppComponent implements OnInit {
         this.router.navigate(['/'])
       }
     })
+  }
+
+  onLogoutClicked(){
+    localStorage.setItem(this.TOKEN_KEY, null);
+    localStorage.setItem(this.ROLE_KEY, null);
+    localStorage.setItem(this.NAME_KEY, null);
+    this.router.navigate(['login']);
   }
 }
