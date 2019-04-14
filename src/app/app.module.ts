@@ -4,25 +4,6 @@ import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {MatTabsModule} from '@angular/material/tabs';
-import {MatButtonModule,
-        MatTableModule,
-        MatCheckboxModule,
-        MatButtonToggleModule,
-        MatCardModule,
-        MatDatepickerModule,
-        MatDialogModule,
-        MatDividerModule,
-        MatExpansionModule,
-        MatGridListModule,
-        MatIconModule,
-        MatInputModule,
-        MatChipsModule,
-        MatListModule,
-        MatPaginatorModule,
-        MatMenuModule,
-        MatNativeDateModule,
-        MatSelectModule,
-        MatAutocompleteModule} from '@angular/material';
 import { AppComponent } from './app.component';
 import { LecturerComponent } from './lecturer/lecturer.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -44,8 +25,21 @@ import {WebService} from './services/web.service';
 import {HttpModule} from '@angular/http';
 import {AuthService} from './auth.service';
 import {RegisterComponent} from './register/register.component';
+// import {MatButtonModule, MatCheckboxModule, MatAutocompleteModule, MatButtonToggleModule,
+//   MatCardModule, MatDatepickerModule, MatTableModule, MatPaginatorModule, MatNativeDateModule,
+//   MatSelectModule, MatDialogModule, MatDividerModule, MatExpansionModule, MatGridListModule,
+//   MatIconModule, MatInputModule, MatChipsModule, MatListModule, MatMenuModule} from '@angular/material';
+import {MatButtonModule,
+  MatTableModule, MatCheckboxModule, MatButtonToggleModule, MatCardModule,
+  MatDatepickerModule, MatDialogModule, MatDividerModule, MatExpansionModule,
+  MatGridListModule, MatIconModule, MatInputModule, MatChipsModule, MatListModule,
+  MatPaginatorModule, MatMenuModule, MatNativeDateModule, MatSelectModule,
+  MatAutocompleteModule} from '@angular/material';
+import {MatRadioButton, MatRadioGroup, MatRadioModule} from "@angular/material/radio";
 import { LecturersSearchComponent } from './lecturers-search/lecturers-search.component';
 import 'hammerjs';
+import { OrganizerComponent } from './organizer/organizer.component';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +49,8 @@ import 'hammerjs';
     RegisterComponent,
     MeetupFormComponent,
     LecturersComponent,
-    LecturersSearchComponent
+    LecturersSearchComponent,
+    OrganizerComponent
 
   ],
   imports: [
@@ -70,10 +65,11 @@ import 'hammerjs';
     MatSelectModule,
     HttpClientModule,
     AngularFireDatabaseModule,
+    MatRadioModule,
     MatTableModule,
     MatPaginatorModule,
     MatAutocompleteModule,
-    MatIconModule, 
+    MatIconModule,
     HttpModule,
     AngularFireModule.initializeApp(environment.firbaseConfig)
 

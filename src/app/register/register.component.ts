@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth.service';
- 
+import {Roles} from "../model/Roles";
+
 
 @Component({
   selector: 'app-register',
@@ -10,6 +11,7 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class RegisterComponent implements OnInit {
   form;
+   Roles= Roles;
 
   constructor(private fb: FormBuilder, private auth: AuthService) {
     this.form = fb.group({
@@ -17,7 +19,8 @@ export class RegisterComponent implements OnInit {
       lastName: ['', Validators.required],
       email: ['', [Validators.required, emailValid()]],
       password: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
+      confirmPassword: ['', Validators.required],
+      role: [Roles.Lecturer, Validators.required],
     }, { validator: matchingFields('password', 'confirmPassword') })
   }
 
@@ -31,6 +34,12 @@ export class RegisterComponent implements OnInit {
 
   isValid(control) {
     return this.form.controls[control].invalid && this.form.controls[control].touched;
+  }
+
+  onRoleChecked(value:Roles){
+    console.log(value)
+    this.form.controls.role.value = value;
+    console.log(this.form.controls)
   }
 }
 

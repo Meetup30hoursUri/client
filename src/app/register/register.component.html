@@ -22,5 +22,24 @@
   <span *ngIf="form.errors?.mismatchedFields">Passwords do not match</span>
   <br />
   <!-- <button>Register</button>-->
-  <button mat-raised-button color="primary">Register</button>
+
+    <mat-radio-group>
+      <mat-radio-button [checked]='true' value='Organizer' (change)="onRoleChecked(Roles.Lecturer)">Lecturer</mat-radio-button>
+      <mat-radio-button value='Lecturer' (change)="onRoleChecked(Roles.Organizer)">Organizer</mat-radio-button>
+    </mat-radio-group>
+
+    <!--<div class="radio">-->
+      <!--<label>-->
+        <!--<input type="radio" name="Role" value="Organizer" [checked]='true' ngModel>-->
+        <!--Male-->
+      <!--</label>-->
+    <!--</div>-->
+    <!--<div class="radio">-->
+      <!--<label>-->
+        <!--<input type="radio" name="Role" value="Roles.Lecturer" ngModel>-->
+        <!--Female-->
+      <!--</label>-->
+    <!--</div>-->
+
+    <button mat-raised-button color="primary">Register</button>
 </form>

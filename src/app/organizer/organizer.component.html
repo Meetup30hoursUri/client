@@ -1,0 +1,36 @@
+<mat-card>  
+  <div class="alert alert-info">  
+      <strong></strong>  
+  </div>  
+  <div class="example-container mat-elevation-z8">  
+      <mat-table #Table [dataSource]="dataSource">  
+
+          <!-- For date-->
+          <ng-container matColumnDef="date">  
+              <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>  
+              <mat-cell *matCellDef="let post"> {{post.date}} </mat-cell>  
+          </ng-container>  
+
+          <!-- For location -->  
+           <ng-container matColumnDef="location">  
+              <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>  
+              <mat-cell *matCellDef="let post"> {{post.location}} </mat-cell>  
+          </ng-container>  
+
+          <!-- For Title -->  
+          <ng-container matColumnDef="title">  
+              <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>  
+              <mat-cell *matCellDef="let post"> {{post.title}} </mat-cell>  
+          </ng-container>  
+
+          <!-- <ng-container matColumnDef="theme">  
+              <mat-header-cell *matHeaderCellDef> Theme </mat-header-cell>  
+              <mat-cell *matCellDef="let post"> {{post.theme}} </mat-cell>  
+          </ng-container>  -->
+         
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>  
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>  
+      </mat-table>  
+  </div>  
+</mat-card>  
