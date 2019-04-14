@@ -37,6 +37,7 @@ import {MatButtonModule,
   MatAutocompleteModule} from '@angular/material';
 import {MatRadioButton, MatRadioGroup, MatRadioModule} from "@angular/material/radio";
 import { LecturersSearchComponent } from './lecturers-search/lecturers-search.component';
+import 'hammerjs';
 import { OrganizerComponent } from './organizer/organizer.component';
 
 

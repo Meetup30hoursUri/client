@@ -12,9 +12,10 @@
         <span *ngIf="!meetupForm.get('title').valid && meetupForm.get('title').touched" class="alert alert-danger">Please enter title</span>
       </mat-error> 
       <mat-form-field class="demo-full-width">  
-          <mat-select formControlName="theme" placeholder="Theme" multiple>
+          <mat-select formControlName="theme" placeholder="Theme" multiple [(value)]="selectedTheme" (selectionChange)="getSelectedThemes()">
                 <ng-container *ngFor="let themes of themesService.themesArray">
-                <mat-option value="{{themes.$key}}">{{themes.name}}</mat-option>
+                <!-- <mat-option value="{{themes.$key}}">{{themes.name}}</mat-option> -->
+                <mat-option [value]="themes">{{themes.name}}</mat-option>
               </ng-container>
             </mat-select> 
       </mat-form-field>  
@@ -27,14 +28,6 @@
       <mat-error>  
         <span *ngIf="!meetupForm.get('location').valid && meetupForm.get('location').touched" class="alert alert-danger">Please enter location </span>
       </mat-error> 
-      <!-- <mat-form-field>
-          <input matInput [matDatepicker]="picker" placeholder="Choose a date" time="true" formControlName="meetupDate" >
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <mat-error>  
-          <span *ngIf="!meetupForm.get('meetupDate').valid && meetupForm.get('meetupDate').touched" class="alert alert-danger">Please enter date </span>
-        </mat-error> -->
       <mat-form-field>       
             <input formControlName="meetupDate" matInput type="datetime-local" placeholder="start date">
       </mat-form-field>    
