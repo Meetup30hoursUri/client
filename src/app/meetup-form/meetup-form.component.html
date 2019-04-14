@@ -46,7 +46,7 @@
   
   <mat-tab label="Add Lecturer">
     <form [formGroup]="meetupForm" (ngSubmit)="onFormSubmit(meetupForm.value)">  
-      <app-lecturers></app-lecturers>
+      <app-lecturers-search></app-lecturers-search>
       <button mat-raised-button color="primary" (click)="addNewMeetup()">Add Meeup</button> 
     </form>
   </mat-tab>

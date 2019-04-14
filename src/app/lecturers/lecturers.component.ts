@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 
 import {MatPaginator, MatTableDataSource} from '@angular/material';
 
@@ -10,12 +10,15 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
 })
 export class LecturersComponent implements OnInit {
 
+  @Input() ELEMENT_DATA: LecturerDetails[];
+
   displayedColumns: string[] = ['select', 'name', 'AreaOfExperties', 'Available'];
-  dataSource = new MatTableDataSource<LecturerDetails>(ELEMENT_DATA);
+  dataSource: MatTableDataSource<LecturerDetails>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
+    this.dataSource = new MatTableDataSource<LecturerDetails>(this.ELEMENT_DATA);
     this.dataSource.paginator = this.paginator;
   }
 }
@@ -27,11 +30,11 @@ export interface LecturerDetails {
   isAvailable: boolean;
 }
 
-const ELEMENT_DATA: LecturerDetails[] = [
+/*const ELEMENT_DATA: LecturerDetails[] = [
   {id: '1', name: 'Tamar Twena', areaOfExperties: 'JavaScript', isAvailable: true},
   {id: '2', name: 'Uri Shaked', areaOfExperties: 'JavaScript', isAvailable: true},
   {id: '3', name: 'Gil Fink', areaOfExperties: 'JavaScript', isAvailable: true},
   {id: '4', name: 'Shai Reznick', areaOfExperties: 'JavaScript', isAvailable: true},
   {id: '5', name: 'Netta Bondy', areaOfExperties: 'JavaScript', isAvailable: true}
-];
+];*/
 
