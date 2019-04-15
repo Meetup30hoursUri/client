@@ -6,6 +6,7 @@ import { User } from './user/User';
 import { AlertService } from './services/alert/alert.service'
 import { first } from 'rxjs/operators';
 import { tokenKey } from '@angular/core/src/view';
+import {UserToRegister} from "./register/register.component";
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class AuthService {
   NAME_KEY = 'name';
   TOKEN_KEY = 'token';
   ROLE_KEY = 'role';
+  FIREBASE_KEY= 'firebase_key';
 
   constructor(private http:HttpClient, private router:Router,
               private sharedService: SharedService,
@@ -43,16 +45,19 @@ export class AuthService {
   }
 
 
-  register(user: User) {
+  register(user: UserToRegister) {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     this.http.post(this.BASE_URL + '/register', user, {headers: headers}).subscribe(res=> {
       var authResponse = res;
-      if (!authResponse['token']) {
+      console.log(authResponse)
+      if (!authResponse['user']['token']) {
         return;
       }
-      localStorage.setItem(this.TOKEN_KEY, authResponse['token']);
-      localStorage.setItem(this.NAME_KEY, authResponse['firstName']);
+      localStorage.setItem(this.FIREBASE_KEY, authResponse['user']['userKey']);
+      localStorage.setItem(this.TOKEN_KEY, authResponse['user']['token']);
+      localStorage.setItem(this.NAME_KEY, authResponse['user']['name']);
+      localStorage.setItem(this.ROLE_KEY, authResponse['user']['role']);
       this.sharedService.emitOnUserRegistered(true);
       this.alertService.success('Registration successful', true);
       this.router.navigate(['/login']);
@@ -68,12 +73,13 @@ export class AuthService {
     this.http.post(this.BASE_URL + '/login', loginData, {headers: headers}).subscribe(res=> {
       console.log(res);
       var loginResponse = res;
-      localStorage.setItem(this.TOKEN_KEY, loginResponse['token']);
-      localStorage.setItem(this.NAME_KEY, loginResponse['firstName']);
-      localStorage.setItem(this.ROLE_KEY, loginResponse['role']);
+      localStorage.setItem(this.FIREBASE_KEY, loginResponse['user']['userKey']);
+      localStorage.setItem(this.TOKEN_KEY, loginResponse['user']['token']);
+      localStorage.setItem(this.NAME_KEY, loginResponse['user']['name']);
+      localStorage.setItem(this.ROLE_KEY, loginResponse['user']['role']);
 
       this.sharedService.emitOnUserRegistered(true);
-      this.router.navigate([returnUrl]);
+     this.router.navigate([returnUrl]);
     }, error=> {
       console.log(error)
       this.alertService.error(error);
@@ -81,9 +87,10 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.setItem(this.TOKEN_KEY, '');
-    localStorage.setItem(this.ROLE_KEY, '');
-    localStorage.setItem(this.NAME_KEY, '');
+    localStorage.setItem(this.TOKEN_KEY, null);
+    localStorage.setItem(this.ROLE_KEY, null);
+    localStorage.setItem(this.NAME_KEY, null);
+    localStorage.setItem(this.FIREBASE_KEY, null);
   }
 
 }
