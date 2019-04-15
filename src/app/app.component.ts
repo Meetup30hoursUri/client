@@ -24,6 +24,10 @@ export class AppComponent implements OnInit {
   ROLES = Roles;
   currRole: string;
   currentUser: boolean;
+
+  NAME_KEY = 'name';
+  TOKEN_KEY = 'token';
+  ROLE_KEY = 'role';
   // lecturers: Observable<any[]>;
 
   constructor(private sharedService:SharedService,
@@ -40,7 +44,7 @@ export class AppComponent implements OnInit {
                 //   this.router.navigate(['/'])
                 // }
               })              // console.log("AppComponent constructor: currentUser " + this.currentUser)
-              
+
   }
 
   ngOnInit() {
@@ -63,6 +67,9 @@ export class AppComponent implements OnInit {
     this.authService.logout();
     this.currentUser = null;
     this.currRole = '';
+    localStorage.setItem(this.NAME_KEY, null);
+    localStorage.setItem(this.TOKEN_KEY, null);
+    localStorage.setItem(this.ROLE_KEY, null);
     this.router.navigate(['login']);
     console.log("AppComponent onLogoutClicked: " + this.currentUser)
   }
