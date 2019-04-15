@@ -4,6 +4,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { ThemesService } from '../services/themes/themes.service';
+import { Meetup } from '../meetup';
+import { MeetupService } from '../services/meetup/meetup.service';
 
 
 @Component({
@@ -22,7 +24,8 @@ export class MeetupFormComponent implements OnInit {
   
   constructor( private fb: FormBuilder,
                private http: HttpClient,
-               private themesService: ThemesService
+               private themesService: ThemesService,
+               private meetupService: MeetupService
     ) {
     this.meetupForm = this.fb.group({
       title:  [null,[
@@ -61,6 +64,8 @@ export class MeetupFormComponent implements OnInit {
   onFormSubmit(form:NgForm)  
     {  
       console.log(form);  
+      const meetup = new Meetup();
+      this.meetupService.addMeetup(meetup);
     }  
 
 
