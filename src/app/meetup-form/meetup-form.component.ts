@@ -48,8 +48,8 @@ export class MeetupFormComponent implements OnInit {
    }
 
    public getSelectedThemes() {
-    var t = this.selectedTheme;
-    console.log(t);
+    // var t = this.selectedTheme;
+    // console.log(t);
     // console.log(t[0].name);
     // console.log(t[0].$key);
 }
