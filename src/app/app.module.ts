@@ -34,7 +34,10 @@ import {MatButtonModule,
   MatDatepickerModule, MatDialogModule, MatDividerModule, MatExpansionModule,
   MatGridListModule, MatIconModule, MatInputModule, MatChipsModule, MatListModule,
   MatPaginatorModule, MatMenuModule, MatNativeDateModule, MatSelectModule,
-  MatAutocompleteModule} from '@angular/material';
+  MatAutocompleteModule,
+  MatSort,
+  MatSortModule,
+  MatSortHeader} from '@angular/material';
 import {MatRadioButton, MatRadioGroup, MatRadioModule} from "@angular/material/radio";
 import { LecturersSearchComponent } from './lecturers-search/lecturers-search.component';
 import 'hammerjs';
@@ -71,6 +74,7 @@ import { OrganizerComponent } from './organizer/organizer.component';
     MatAutocompleteModule,
     MatIconModule,
     HttpModule,
+    MatSortModule,
     AngularFireModule.initializeApp(environment.firbaseConfig)
 
 

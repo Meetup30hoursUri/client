@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-organizer',
@@ -8,9 +8,11 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./organizer.component.css']
 })
 export class OrganizerComponent implements OnInit {
-  displayedColumns = ['title','date','location'];
+  displayedColumns = ['title','date','location','theme'];
   dataSource: any;
-
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  
   constructor(private firebase: AngularFireDatabase) {
   }
 
@@ -26,8 +28,9 @@ export class OrganizerComponent implements OnInit {
           organizerSnapshot.forEach(function(snapshot)  {
             console.log(snapshot.val());
             snapshot.forEach(item => {
-             // var res = item.val().themes;
-              var temp={ title : item.val().title, date: item.val().date, location: item.val().location};
+             var themes = item.val().themes;
+             var theme = Object["values"](themes).map(x => (x as any).name);
+              var temp={ title : item.val().title, date: item.val().date, location: item.val().location, theme: theme};
             
             itemsList.push(temp);
             return false;
@@ -43,6 +46,14 @@ export class OrganizerComponent implements OnInit {
     this.dataSource = new MatTableDataSource();
     promise.then(data => this.dataSource = data)
     .catch(error => console.log(error));
+
+    
+    }
+
+
+    ngAfterViewInit() {
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     }
   }
 
