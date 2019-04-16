@@ -63,11 +63,19 @@ export class MeetupFormComponent implements OnInit {
   }
   onFormSubmit(form:NgForm)  
     {  
-      console.log(form);  
-      const meetup = new Meetup();
-      this.meetupService.addMeetup(meetup);
+      console.log(form); 
     }  
 
+    addNewMeetup() {
+      const meetup = new Meetup();
+      const form = this.meetupForm.value;
+      meetup.title = form.title; 
+      meetup.location = form.location;
+      meetup.date = form.meetupDate;
+      console.log(form);
+      this.meetupService.addMeetup(meetup); 
+     
+    }
 
 
 }
